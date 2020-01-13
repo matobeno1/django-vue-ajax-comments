@@ -1,0 +1,41 @@
+{% extends 'books/base.html' %}
+{% load static %}
+
+{% block content %}
+    {% csrf_token %}
+    <div>
+        <h1>{{ book.name }}</h1>
+        <p>{{ book.description }}</p>
+    </div>
+
+    <style>
+        .comment {
+            border: 1px solid black;
+            padding: 1rem;
+            border-radius: 1rem;
+        }
+    </style>
+
+    <div id="comments">
+        {% for comment in book.comments.all %}
+            <div class="comment">
+                <b>{{ comment.user }}:</b>
+                {{ comment.text }}
+
+            </div>
+        {% endfor %}
+        <div id="dynamic_comments"></div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        const book_id = "{{ book.id }}";
+        const csrf_token = "{{ csrf_token }}";
+    </script>
+    <script src="{% static 'books/comments.js' %}"></script>
+
+{% endblock %}
