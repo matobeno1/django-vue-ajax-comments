@@ -15,4 +15,4 @@ python3 bookstore/manage.py runserver
 For CRUD operations on books or comments login at `127.0.0.1/admin` as `root` with password `root`.
 
 
-You can then see the running webpage at [localhost](htts://127.0.0.1/).
+You can then see the running webpage at [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
